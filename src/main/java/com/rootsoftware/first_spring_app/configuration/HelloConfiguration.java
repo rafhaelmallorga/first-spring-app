@@ -1,3 +1,4 @@
+/*
 package com.rootsoftware.first_spring_app.configuration;
 
 // External class injection.
@@ -13,3 +14,4 @@ public class HelloConfiguration {
         return new MyServiceImpl();
     }
 }
+*/

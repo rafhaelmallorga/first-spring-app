@@ -1,10 +1,9 @@
 package com.rootsoftware.first_spring_app.controller;
 
+import com.rootsoftware.first_spring_app.domain.User;
 import com.rootsoftware.first_spring_app.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hello-world")
@@ -21,5 +20,10 @@ public class HelloWorldController {
     public String helloWorld() {
 
         return this.helloWorldService.helloWorld("Mallorga");
+    }
+
+    @PostMapping("/{id}")
+    public String helloWorldPost(@PathVariable("id") String id, @RequestParam(value = "filter", defaultValue = "nenhum") String filter, @RequestBody User body) {
+        return "Hello World!: " + "(" + id + ") " +  body.getName() + " (" + body.getEmail() + ") " + filter;
     }
 }
