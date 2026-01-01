@@ -1,6 +1,7 @@
 package com.rootsoftware.first_spring_app.controller;
 
 import com.rootsoftware.first_spring_app.domain.User;
+import com.rootsoftware.first_spring_app.exceptions.HelloWorldException;
 import com.rootsoftware.first_spring_app.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,9 @@ public class HelloWorldController {
 
     @PostMapping("/{id}")
     public String helloWorldPost(@PathVariable("id") String id, @RequestParam(value = "filter", defaultValue = "nenhum") String filter, @RequestBody User body) {
+        if (true) {
+            throw new HelloWorldException();
+        }
         return "Hello World!: " + "(" + id + ") " +  body.getName() + " (" + body.getEmail() + ") " + filter;
     }
 }
